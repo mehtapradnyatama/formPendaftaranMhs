@@ -27,6 +27,29 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        labelNoPendaftaran = new javax.swing.JLabel();
+        labelProgramStudi = new javax.swing.JLabel();
+        labelNama = new javax.swing.JLabel();
+        labelJenisKelamin = new javax.swing.JLabel();
+        labelTempatLahir = new javax.swing.JLabel();
+        labelTanggalLahir = new javax.swing.JLabel();
+        labelAgama = new javax.swing.JLabel();
+        labelAlamat = new javax.swing.JLabel();
+        labelNoTelelpon = new javax.swing.JLabel();
+        labelEmail = new javax.swing.JLabel();
+        btnDaftarkan = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        txtNoPendaftaran = new javax.swing.JTextField();
+        txtNama = new javax.swing.JTextField();
+        txtTempatLahir = new javax.swing.JTextField();
+        txtTanggalLahir = new javax.swing.JTextField();
+        txtAgama = new javax.swing.JTextField();
+        txtAlamat = new javax.swing.JTextField();
+        txtTelepon = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        CmbBoxProgramStudi = new javax.swing.JComboBox<>();
+        BtnLakiLaki = new javax.swing.JRadioButton();
+        BtnPerempuan = new javax.swing.JRadioButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         txtMenuUtama = new javax.swing.JMenuItem();
@@ -39,6 +62,46 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Form Pendaftaran");
+
+        labelNoPendaftaran.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNoPendaftaran.setText("No. Pendaftaran");
+
+        labelProgramStudi.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelProgramStudi.setText("Program Studi Yang Dipilih");
+
+        labelNama.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNama.setText("Nama ");
+
+        labelJenisKelamin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelJenisKelamin.setText("Jenis Kelamin");
+
+        labelTempatLahir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTempatLahir.setText("Tempat Lahir");
+
+        labelTanggalLahir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelTanggalLahir.setText("Tanggal Lahir");
+
+        labelAgama.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelAgama.setText("Agama");
+
+        labelAlamat.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelAlamat.setText("Alamat Lengkap ");
+
+        labelNoTelelpon.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNoTelelpon.setText("No. Telepon");
+
+        labelEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelEmail.setText("Email ");
+
+        btnDaftarkan.setText("Daftarkan ");
+
+        btnReset.setText("Reset");
+
+        CmbBoxProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika - S1", "Sistem Informasi - S1", "Ilmu Komunikasi - S1", "Akutansi- S1", "Manajemen -S1", "Sastra Jepang - S1 " }));
+
+        BtnLakiLaki.setText("Laki-Laki");
+
+        BtnPerempuan.setText("Perempuan");
 
         jMenu1.setText("Daftar Mahasiswa");
 
@@ -69,16 +132,99 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(150, 150, 150)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addComponent(btnDaftarkan)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnReset))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(labelProgramStudi, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                        .addComponent(labelNoPendaftaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(labelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelNoTelelpon, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtEmail)
+                                    .addComponent(txtTelepon)
+                                    .addComponent(txtAlamat)
+                                    .addComponent(txtAgama)
+                                    .addComponent(txtTanggalLahir)
+                                    .addComponent(txtTempatLahir)
+                                    .addComponent(txtNama)
+                                    .addComponent(txtNoPendaftaran)
+                                    .addComponent(CmbBoxProgramStudi, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(BtnLakiLaki, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(BtnPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(412, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNoPendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNoPendaftaran, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(labelProgramStudi, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(CmbBoxProgramStudi))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BtnPerempuan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelJenisKelamin, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                    .addComponent(BtnLakiLaki, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNoTelelpon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTelepon, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnReset)
+                    .addComponent(btnDaftarkan))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -131,12 +277,35 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton BtnLakiLaki;
+    private javax.swing.JRadioButton BtnPerempuan;
+    private javax.swing.JComboBox<String> CmbBoxProgramStudi;
     private javax.swing.JPopupMenu.Separator SeparatorEditData;
     private javax.swing.JPopupMenu.Separator SeparatorMenuUtama;
+    private javax.swing.JButton btnDaftarkan;
+    private javax.swing.JButton btnReset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JLabel labelAgama;
+    private javax.swing.JLabel labelAlamat;
+    private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelJenisKelamin;
+    private javax.swing.JLabel labelNama;
+    private javax.swing.JLabel labelNoPendaftaran;
+    private javax.swing.JLabel labelNoTelelpon;
+    private javax.swing.JLabel labelProgramStudi;
+    private javax.swing.JLabel labelTanggalLahir;
+    private javax.swing.JLabel labelTempatLahir;
+    private javax.swing.JTextField txtAgama;
+    private javax.swing.JTextField txtAlamat;
     private javax.swing.JMenuItem txtEditData;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JMenuItem txtMenuUtama;
+    private javax.swing.JTextField txtNama;
+    private javax.swing.JTextField txtNoPendaftaran;
+    private javax.swing.JTextField txtTanggalLahir;
+    private javax.swing.JTextField txtTelepon;
+    private javax.swing.JTextField txtTempatLahir;
     // End of variables declaration//GEN-END:variables
 }
