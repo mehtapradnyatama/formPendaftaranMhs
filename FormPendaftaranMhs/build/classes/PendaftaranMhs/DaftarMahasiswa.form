@@ -57,10 +57,56 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="170" max="-2" attributes="0"/>
-              <EmptySpace pref="150" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                              <Component id="btnDaftarkan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="btnReset" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="labelProgramStudi" pref="185" max="32767" attributes="0"/>
+                                  <Component id="labelNoPendaftaran" max="32767" attributes="0"/>
+                                  <Component id="labelNama" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelTempatLahir" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelAgama" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelAlamat" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelNoTelelpon" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelEmail" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelJenisKelamin" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
+                                  <Component id="labelTanggalLahir" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtEmail" max="32767" attributes="0"/>
+                                  <Component id="txtTelepon" max="32767" attributes="0"/>
+                                  <Component id="txtAlamat" max="32767" attributes="0"/>
+                                  <Component id="txtAgama" max="32767" attributes="0"/>
+                                  <Component id="txtTanggalLahir" max="32767" attributes="0"/>
+                                  <Component id="txtTempatLahir" max="32767" attributes="0"/>
+                                  <Component id="txtNama" max="32767" attributes="0"/>
+                                  <Component id="txtNoPendaftaran" max="32767" attributes="0"/>
+                                  <Component id="CmbBoxProgramStudi" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="BtnLakiLaki" pref="118" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="BtnPerempuan" min="-2" pref="118" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
+                      <Component id="jLabel1" min="-2" pref="170" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace pref="171" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,7 +115,63 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="412" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelNoPendaftaran" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtNoPendaftaran" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="labelProgramStudi" pref="35" max="32767" attributes="0"/>
+                  <Component id="CmbBoxProgramStudi" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelNama" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtNama" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="BtnPerempuan" max="32767" attributes="0"/>
+                  <Component id="labelJenisKelamin" pref="35" max="32767" attributes="0"/>
+                  <Component id="BtnLakiLaki" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelTempatLahir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtTempatLahir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelTanggalLahir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtTanggalLahir" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelAgama" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtAgama" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelAlamat" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtAlamat" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelNoTelelpon" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtTelepon" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="labelEmail" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="txtEmail" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnReset" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnDaftarkan" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -82,6 +184,139 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="Form Pendaftaran"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNoPendaftaran">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="No. Pendaftaran"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelProgramStudi">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Program Studi Yang Dipilih"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNama">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Nama "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelJenisKelamin">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Jenis Kelamin"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelTempatLahir">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Tempat Lahir"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelTanggalLahir">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Tanggal Lahir YYYY-MM-DD"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelAgama">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Agama"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelAlamat">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Alamat Lengkap "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelNoTelelpon">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="No. Telepon"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="labelEmail">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="0"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Email "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnDaftarkan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Daftarkan "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnReset">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Reset"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNoPendaftaran">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtNama">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTempatLahir">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTanggalLahir">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAgama">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtAlamat">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtTelepon">
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtEmail">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="CmbBoxProgramStudi">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="6">
+            <StringItem index="0" value="Teknik Informatika - S1"/>
+            <StringItem index="1" value="Sistem Informasi - S1"/>
+            <StringItem index="2" value="Ilmu Komunikasi - S1"/>
+            <StringItem index="3" value="Akutansi- S1"/>
+            <StringItem index="4" value="Manajemen -S1"/>
+            <StringItem index="5" value="Sastra Jepang - S1 "/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="BtnLakiLaki">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Laki-Laki"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="BtnPerempuan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Perempuan"/>
       </Properties>
     </Component>
   </SubComponents>

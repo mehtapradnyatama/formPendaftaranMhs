@@ -3,20 +3,94 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package PendaftaranMhs;
-
+import PendaftaranMhs.LihatData;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author USER
  */
 public class DaftarMahasiswa extends javax.swing.JFrame {
+    Connection con;
+    PreparedStatement pst;
 
-    /**
-     * Creates new form coba2
-     */
     public DaftarMahasiswa() {
         initComponents();
+        connect();
+        btnDaftarkan.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                registerStudent();
+            }
+        });
+        btnReset.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                resetForm();
+            }
+        });
     }
 
+    // Method to establish database connection
+    public void connect() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pendaftaranmhs", "root", "");
+        } catch (ClassNotFoundException | SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    // Method to register a student
+    public void registerStudent() {
+        String noPendaftaran = txtNoPendaftaran.getText();
+        String programStudi = CmbBoxProgramStudi.getSelectedItem().toString();
+        String nama = txtNama.getText();
+        String jenisKelamin = BtnLakiLaki.isSelected() ? "Laki-Laki" : "Perempuan";
+        String tempatLahir = txtTempatLahir.getText();
+        String tanggalLahir = txtTanggalLahir.getText();
+        String agama = txtAgama.getText();
+        String alamat = txtAlamat.getText();
+        String telepon = txtTelepon.getText();
+        String email = txtEmail.getText();
+
+        try {
+            pst = con.prepareStatement("INSERT INTO mahasiswa(noPendaftaran, programStudi, nama, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pst.setString(1, noPendaftaran);
+            pst.setString(2, programStudi);
+            pst.setString(3, nama);
+            pst.setString(4, jenisKelamin);
+            pst.setString(5, tempatLahir);
+            pst.setString(6, tanggalLahir);
+            pst.setString(7, agama);
+            pst.setString(8, alamat);
+            pst.setString(9, telepon);
+            pst.setString(10, email);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data Mahasiswa Berhasil Disimpan");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    // Method to reset the form
+    public void resetForm() {
+        txtNoPendaftaran.setText("");
+        CmbBoxProgramStudi.setSelectedIndex(0);
+        txtNama.setText("");
+        BtnLakiLaki.setSelected(false);
+        BtnPerempuan.setSelected(false);
+        txtTempatLahir.setText("");
+        txtTanggalLahir.setText("");
+        txtAgama.setText("");
+        txtAlamat.setText("");
+        txtTelepon.setText("");
+        txtEmail.setText("");
+    }
+    // Event handlers for menu items
+
+    // Event handlers for menu items
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -79,7 +153,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         labelTempatLahir.setText("Tempat Lahir");
 
         labelTanggalLahir.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelTanggalLahir.setText("Tanggal Lahir");
+        labelTanggalLahir.setText("Tanggal Lahir YYYY-MM-DD");
 
         labelAgama.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelAgama.setText("Agama");
@@ -142,18 +216,17 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(btnReset))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(labelProgramStudi, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                                        .addComponent(labelNoPendaftaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(labelProgramStudi, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                                    .addComponent(labelNoPendaftaran, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(labelNama, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelTempatLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelAgama, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelNoTelelpon, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelTanggalLahir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtEmail)
@@ -172,7 +245,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(171, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -236,39 +309,14 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     }//GEN-LAST:event_txtMenuUtamaActionPerformed
 
     private void txtEditDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditDataActionPerformed
-        // TODO add your handling code here:
-        new LihatData().setVisible(true);
+        // TODO add your handing code here:
+        
     }//GEN-LAST:event_txtEditDataActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DaftarMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DaftarMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DaftarMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DaftarMahasiswa.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new DaftarMahasiswa().setVisible(true);
@@ -308,4 +356,9 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelepon;
     private javax.swing.JTextField txtTempatLahir;
     // End of variables declaration//GEN-END:variables
+
 }
+
+     
+
+
