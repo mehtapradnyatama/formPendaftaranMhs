@@ -4,17 +4,69 @@
  */
 package PendaftaranMhs;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author USER
  */
 public class LihatData extends javax.swing.JFrame {
 
+    private Connection con;
+    private PreparedStatement pst;
+    private ResultSet rs;
+
     /**
      * Creates new form EditData
      */
     public LihatData() {
         initComponents();
+        connect();
+        fetchData();
+    }
+
+    private void connect() {
+        try {
+            con = DriverManager.getConnection("jdbc:mysql://localhost/pendaftaranmhs", "root", "");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    private void fetchData() {
+        try {
+            String query = "SELECT * FROM mahasiswa";
+            PreparedStatement pst = con.prepareStatement(query);
+            ResultSet rs = pst.executeQuery();
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getString("noPendaftaran"),
+                    rs.getString("nama"),
+                    rs.getString("programStudi"),
+                    rs.getString("jenisKelamin"),
+                    rs.getString("tempatLahir"),
+                    rs.getString("tanggalLahir"),
+                    rs.getString("agama"),
+                    rs.getString("alamat"),
+                    rs.getString("telepon"),
+                    rs.getString("email")
+                });
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
     }
 
     /**
@@ -29,6 +81,8 @@ public class LihatData extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        btnEdit = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         txtMenuUtama = new javax.swing.JMenuItem();
@@ -51,6 +105,20 @@ public class LihatData extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LIST DATA PENDAFTARAN MAHASISWA");
+
+        btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
+
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("Data Mahasiswa");
 
@@ -80,23 +148,36 @@ public class LihatData extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(292, 292, 292)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnEdit)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnDelete)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(293, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(313, 313, 313))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(8, 8, 8)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(24, 24, 24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEdit)
+                    .addComponent(btnDelete))
+                .addGap(9, 9, 9))
         );
 
         pack();
@@ -111,6 +192,50 @@ public class LihatData extends javax.swing.JFrame {
         // TODO add your handling code here:
         new DaftarMahasiswa().setVisible(true);
     }//GEN-LAST:event_txtDaftarActionPerformed
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // Memeriksa apakah baris telah dipilih
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            // Mengambil data dari baris yang dipilih
+            String noPendaftaran = (String) jTable1.getValueAt(selectedRow, 0);
+            String nama = (String) jTable1.getValueAt(selectedRow, 1);
+            String programStudi = (String) jTable1.getValueAt(selectedRow, 2);
+            String jenisKelamin = (String) jTable1.getValueAt(selectedRow, 3);
+            String tempatLahir = (String) jTable1.getValueAt(selectedRow, 4);
+            String tanggalLahir = (String) jTable1.getValueAt(selectedRow, 5);
+            String agama = (String) jTable1.getValueAt(selectedRow, 6);
+            String alamat = (String) jTable1.getValueAt(selectedRow, 7);
+            String telepon = (String) jTable1.getValueAt(selectedRow, 8);
+            String email = (String) jTable1.getValueAt(selectedRow, 9);
+
+            // Membuka form DaftarMahasiswa dengan data yang ada untuk diedit
+            DaftarMahasiswa daftarMahasiswa = new DaftarMahasiswa();
+            daftarMahasiswa.setVisible(true);
+            daftarMahasiswa.loadData(noPendaftaran, nama, programStudi, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email);
+        } else {
+            JOptionPane.showMessageDialog(null, "Pilih baris yang ingin diedit terlebih dahulu.");
+        }
+    }//GEN-LAST:event_btnEditActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow != -1) {
+            String noPendaftaran = (String) jTable1.getValueAt(selectedRow, 0);
+            try {
+                pst = con.prepareStatement("DELETE FROM mahasiswa WHERE noPendaftaran = ?");
+                pst.setString(1, noPendaftaran);
+                pst.executeUpdate();
+                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+                model.removeRow(selectedRow);
+                JOptionPane.showMessageDialog(this, "Data berhasil dihapus");
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus");
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -151,6 +276,8 @@ public class LihatData extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPopupMenu.Separator SeparatorDaftar;
     private javax.swing.JPopupMenu.Separator SeparatorMenuUtama;
+    private javax.swing.JButton btnDelete;
+    private javax.swing.JButton btnEdit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

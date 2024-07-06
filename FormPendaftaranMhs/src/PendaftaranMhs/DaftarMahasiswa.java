@@ -3,17 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package PendaftaranMhs;
+
 import PendaftaranMhs.LihatData;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+
 /**
  *
  * @author USER
  */
 public class DaftarMahasiswa extends javax.swing.JFrame {
+
     Connection con;
     PreparedStatement pst;
 
@@ -31,8 +34,29 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
             ex.printStackTrace();
         }
     }
-    // Event handlers for menu items
 
+    public void loadData(String noPendaftaran, String nama, String programStudi, String jenisKelamin, String tempatLahir, String tanggalLahir, String agama, String alamat, String telepon, String email) {
+        // Mengatur nilai dari masing-masing field form sesuai dengan data yang diterima
+        txtNoPendaftaran.setText(noPendaftaran);
+        txtNama.setText(nama);
+        CmbBoxProgramStudi.setSelectedItem(programStudi);
+        if (jenisKelamin.equals("Laki-Laki")) {
+            BtnLakiLaki.setSelected(true);
+        } else if (jenisKelamin.equals("Perempuan")) {
+            BtnPerempuan.setSelected(true);
+        }
+        txtTempatLahir.setText(tempatLahir);
+        txtTanggalLahir.setText(tanggalLahir); // Pastikan format tanggal sesuai
+        txtAgama.setText(agama);
+        txtAlamat.setText(alamat);
+        txtTelepon.setText(telepon);
+        txtEmail.setText(email);
+
+        // Membuat field NoPendaftaran tidak dapat diedit karena biasanya merupakan key
+        txtNoPendaftaran.setEditable(false);
+    }
+
+    // Event handlers for menu items
     // Event handlers for menu items
     /**
      * This method is called from within the constructor to initialize the form.
@@ -358,7 +382,3 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
-
-     
-
-
