@@ -20,16 +20,6 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     public DaftarMahasiswa() {
         initComponents();
         connect();
-        btnDaftarkan.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                registerStudent();
-            }
-        });
-        btnReset.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                resetForm();
-            }
-        });
     }
 
     // Method to establish database connection
@@ -40,53 +30,6 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         } catch (ClassNotFoundException | SQLException ex) {
             ex.printStackTrace();
         }
-    }
-
-    // Method to register a student
-    public void registerStudent() {
-        String noPendaftaran = txtNoPendaftaran.getText();
-        String programStudi = CmbBoxProgramStudi.getSelectedItem().toString();
-        String nama = txtNama.getText();
-        String jenisKelamin = BtnLakiLaki.isSelected() ? "Laki-Laki" : "Perempuan";
-        String tempatLahir = txtTempatLahir.getText();
-        String tanggalLahir = txtTanggalLahir.getText();
-        String agama = txtAgama.getText();
-        String alamat = txtAlamat.getText();
-        String telepon = txtTelepon.getText();
-        String email = txtEmail.getText();
-
-        try {
-            pst = con.prepareStatement("INSERT INTO mahasiswa(noPendaftaran, programStudi, nama, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            pst.setString(1, noPendaftaran);
-            pst.setString(2, programStudi);
-            pst.setString(3, nama);
-            pst.setString(4, jenisKelamin);
-            pst.setString(5, tempatLahir);
-            pst.setString(6, tanggalLahir);
-            pst.setString(7, agama);
-            pst.setString(8, alamat);
-            pst.setString(9, telepon);
-            pst.setString(10, email);
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Data Mahasiswa Berhasil Disimpan");
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    // Method to reset the form
-    public void resetForm() {
-        txtNoPendaftaran.setText("");
-        CmbBoxProgramStudi.setSelectedIndex(0);
-        txtNama.setText("");
-        BtnLakiLaki.setSelected(false);
-        BtnPerempuan.setSelected(false);
-        txtTempatLahir.setText("");
-        txtTanggalLahir.setText("");
-        txtAgama.setText("");
-        txtAlamat.setText("");
-        txtTelepon.setText("");
-        txtEmail.setText("");
     }
     // Event handlers for menu items
 
@@ -168,8 +111,18 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         labelEmail.setText("Email ");
 
         btnDaftarkan.setText("Daftarkan ");
+        btnDaftarkan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDaftarkanActionPerformed(evt);
+            }
+        });
 
         btnReset.setText("Reset");
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         CmbBoxProgramStudi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Teknik Informatika - S1", "Sistem Informasi - S1", "Ilmu Komunikasi - S1", "Akutansi- S1", "Manajemen -S1", "Sastra Jepang - S1 " }));
 
@@ -310,8 +263,55 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
 
     private void txtEditDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEditDataActionPerformed
         // TODO add your handing code here:
-        
+        new LihatData().setVisible(true);
     }//GEN-LAST:event_txtEditDataActionPerformed
+
+    private void btnDaftarkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarkanActionPerformed
+        // Kode dari registerStudent
+        String noPendaftaran = txtNoPendaftaran.getText();
+        String programStudi = CmbBoxProgramStudi.getSelectedItem().toString();
+        String nama = txtNama.getText();
+        String jenisKelamin = BtnLakiLaki.isSelected() ? "Laki-Laki" : "Perempuan";
+        String tempatLahir = txtTempatLahir.getText();
+        String tanggalLahir = txtTanggalLahir.getText();
+        String agama = txtAgama.getText();
+        String alamat = txtAlamat.getText();
+        String telepon = txtTelepon.getText();
+        String email = txtEmail.getText();
+
+        try {
+            pst = con.prepareStatement("INSERT INTO mahasiswa(noPendaftaran, programStudi, nama, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pst.setString(1, noPendaftaran);
+            pst.setString(2, programStudi);
+            pst.setString(3, nama);
+            pst.setString(4, jenisKelamin);
+            pst.setString(5, tempatLahir);
+            pst.setString(6, tanggalLahir);
+            pst.setString(7, agama);
+            pst.setString(8, alamat);
+            pst.setString(9, telepon);
+            pst.setString(10, email);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Data Mahasiswa Berhasil Disimpan");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }//GEN-LAST:event_btnDaftarkanActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // Kode dari resetForm
+        txtNoPendaftaran.setText("");
+        CmbBoxProgramStudi.setSelectedIndex(0);
+        txtNama.setText("");
+        BtnLakiLaki.setSelected(false);
+        BtnPerempuan.setSelected(false);
+        txtTempatLahir.setText("");
+        txtTanggalLahir.setText("");
+        txtAgama.setText("");
+        txtAlamat.setText("");
+        txtTelepon.setText("");
+        txtEmail.setText("");
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
