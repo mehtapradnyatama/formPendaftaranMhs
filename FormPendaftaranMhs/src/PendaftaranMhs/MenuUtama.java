@@ -34,6 +34,8 @@ public class MenuUtama extends javax.swing.JFrame {
         txtDaftar = new javax.swing.JMenuItem();
         SeparatorDaftar = new javax.swing.JPopupMenu.Separator();
         txtEdit = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        txtManajemenMataKuliah = new javax.swing.JMenuItem();
         SeparatorEdit = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,13 +63,22 @@ public class MenuUtama extends javax.swing.JFrame {
         jMenu1.add(txtDaftar);
         jMenu1.add(SeparatorDaftar);
 
-        txtEdit.setText("Edit Data");
+        txtEdit.setText("Edit Data Mahasiswa");
         txtEdit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEditActionPerformed(evt);
             }
         });
         jMenu1.add(txtEdit);
+        jMenu1.add(jSeparator1);
+
+        txtManajemenMataKuliah.setText("Manajemen Mata kuliah");
+        txtManajemenMataKuliah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtManajemenMataKuliahActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtManajemenMataKuliah);
         jMenu1.add(SeparatorEdit);
 
         jMenuBar1.add(jMenu1);
@@ -110,6 +121,11 @@ public class MenuUtama extends javax.swing.JFrame {
         // TODO add your handling code here:
         new LihatData().setVisible(true);
     }//GEN-LAST:event_txtEditActionPerformed
+
+    private void txtManajemenMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManajemenMataKuliahActionPerformed
+        // TODO add your handling code here:
+        new ManajemenMK().setVisible(true);
+    }//GEN-LAST:event_txtManajemenMataKuliahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,8 +171,10 @@ public class MenuUtama extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem txtDaftar;
     private javax.swing.JMenuItem txtEdit;
+    private javax.swing.JMenuItem txtManajemenMataKuliah;
     // End of variables declaration//GEN-END:variables
 
 }

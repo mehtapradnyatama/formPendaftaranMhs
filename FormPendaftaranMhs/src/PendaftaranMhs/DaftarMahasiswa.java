@@ -96,6 +96,8 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         txtMenuUtama = new javax.swing.JMenuItem();
         SeparatorMenuUtama = new javax.swing.JPopupMenu.Separator();
         txtEditData = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        txtManajemenMataKuliah = new javax.swing.JMenuItem();
         SeparatorEditData = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -172,6 +174,15 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
             }
         });
         jMenu1.add(txtEditData);
+        jMenu1.add(jSeparator1);
+
+        txtManajemenMataKuliah.setText("Manajemen Mata Kuliah");
+        txtManajemenMataKuliah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtManajemenMataKuliahActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtManajemenMataKuliah);
         jMenu1.add(SeparatorEditData);
 
         jMenuBar1.add(jMenu1);
@@ -337,6 +348,11 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         txtEmail.setText("");
     }//GEN-LAST:event_btnResetActionPerformed
 
+    private void txtManajemenMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManajemenMataKuliahActionPerformed
+        // TODO add your handling code here:
+        new ManajemenMK().setVisible(true);
+    }//GEN-LAST:event_txtManajemenMataKuliahActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -359,6 +375,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JLabel labelAgama;
     private javax.swing.JLabel labelAlamat;
     private javax.swing.JLabel labelEmail;
@@ -373,6 +390,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JMenuItem txtEditData;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JMenuItem txtManajemenMataKuliah;
     private javax.swing.JMenuItem txtMenuUtama;
     private javax.swing.JTextField txtNama;
     private javax.swing.JTextField txtNoPendaftaran;
@@ -380,5 +398,9 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField txtTelepon;
     private javax.swing.JTextField txtTempatLahir;
     // End of variables declaration//GEN-END:variables
+
+    void SetVisible(boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
