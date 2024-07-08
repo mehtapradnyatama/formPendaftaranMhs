@@ -167,7 +167,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         jMenu1.add(txtMenuUtama);
         jMenu1.add(SeparatorMenuUtama);
 
-        txtEditData.setText("Edit Data Mahasiswa");
+        txtEditData.setText("Lihat Data Mahasiswa");
         txtEditData.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEditDataActionPerformed(evt);

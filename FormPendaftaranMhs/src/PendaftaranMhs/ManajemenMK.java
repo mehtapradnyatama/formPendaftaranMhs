@@ -148,7 +148,7 @@ public class ManajemenMK extends javax.swing.JFrame {
         jMenu1.add(txtDaftarMahasiswa);
         jMenu1.add(jSeparator2);
 
-        txtEditDataMahasiswa.setText("Edit Data Mahasiswa");
+        txtEditDataMahasiswa.setText("Lihat Data Mahasiswa");
         txtEditDataMahasiswa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEditDataMahasiswaActionPerformed(evt);

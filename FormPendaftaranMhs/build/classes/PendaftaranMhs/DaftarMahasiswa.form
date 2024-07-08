@@ -21,7 +21,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="txtEditData">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Edit Data Mahasiswa"/>
+                <Property name="text" type="java.lang.String" value="Lihat Data Mahasiswa"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEditDataActionPerformed"/>
