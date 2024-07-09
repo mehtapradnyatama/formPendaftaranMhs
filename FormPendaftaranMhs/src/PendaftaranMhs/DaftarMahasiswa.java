@@ -5,11 +5,21 @@
 package PendaftaranMhs;
 
 import PendaftaranMhs.LihatData;
+import PendaftaranMhs.LihatData;
+import PendaftaranMhs.LihatData;
+import PendaftaranMhs.LihatData;
+import PendaftaranMhs.ManajemenMK;
+import PendaftaranMhs.ManajemenMK;
+import PendaftaranMhs.ManajemenMK;
+import PendaftaranMhs.MenuUtama;
+import PendaftaranMhs.MenuUtama;
+import PendaftaranMhs.MenuUtama;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,6 +29,8 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
 
     Connection con;
     PreparedStatement pst;
+    boolean editMode = false;  // Untuk melacak apakah kita dalam mode edit atau tidak
+    String currentStudentId = "";
 
     public DaftarMahasiswa() {
         initComponents();
@@ -54,6 +66,33 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
 
         // Membuat field NoPendaftaran tidak dapat diedit karena biasanya merupakan key
         txtNoPendaftaran.setEditable(false);
+    }
+
+    public void loadAndEdit(String noPendaftaran) {
+        try {
+            String query = "SELECT * FROM mahasiswa WHERE noPendaftaran = ?";
+            pst = con.prepareStatement(query);
+            pst.setString(1, noPendaftaran);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                txtNoPendaftaran.setText(rs.getString("noPendaftaran"));
+                txtNama.setText(rs.getString("nama"));
+                CmbBoxProgramStudi.setSelectedItem(rs.getString("programStudi"));
+                BtnLakiLaki.setSelected(rs.getString("jenisKelamin").equals("Laki-Laki"));
+                BtnPerempuan.setSelected(rs.getString("jenisKelamin").equals("Perempuan"));
+                txtTempatLahir.setText(rs.getString("tempatLahir"));
+                txtTanggalLahir.setText(rs.getString("tanggalLahir"));
+                txtAgama.setText(rs.getString("agama"));
+                txtAlamat.setText(rs.getString("alamat"));
+                txtTelepon.setText(rs.getString("telepon"));
+                txtEmail.setText(rs.getString("email"));
+                editMode = true;
+                currentStudentId = rs.getString("id"); // diasumsikan Anda mempunyai kolom 'id'
+                txtNoPendaftaran.setEditable(false); // No pendaftaran tidak boleh diedit
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error loading data: " + ex.getMessage());
+        }
     }
 
     // Event handlers for menu items
@@ -147,6 +186,12 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         btnReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResetActionPerformed(evt);
+            }
+        });
+
+        txtNoPendaftaran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNoPendaftaranActionPerformed(evt);
             }
         });
 
@@ -315,7 +360,17 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         String email = txtEmail.getText();
 
         try {
-            pst = con.prepareStatement("INSERT INTO mahasiswa(noPendaftaran, programStudi, nama, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            String sql;
+            if (editMode) {
+                // Update jika dalam mode edit
+                sql = "UPDATE mahasiswa SET noPendaftaran=?, programStudi=?, nama=?, jenisKelamin=?, tempatLahir=?, tanggalLahir=?, agama=?, alamat=?, telepon=?, email=? WHERE id=?";
+                pst = con.prepareStatement(sql);
+                pst.setString(11, currentStudentId);
+            } else {
+                // Insert jika dalam mode tambah baru
+                sql = "INSERT INTO mahasiswa(noPendaftaran, programStudi, nama, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                pst = con.prepareStatement(sql);
+            }
             pst.setString(1, noPendaftaran);
             pst.setString(2, programStudi);
             pst.setString(3, nama);
@@ -328,8 +383,11 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
             pst.setString(10, email);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(this, "Data Mahasiswa Berhasil Disimpan");
+            if (editMode) {
+                this.dispose();  // Tutup form jika edit selesai
+            }
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error saving data: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnDaftarkanActionPerformed
 
@@ -352,6 +410,48 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
         new ManajemenMK().setVisible(true);
     }//GEN-LAST:event_txtManajemenMataKuliahActionPerformed
+
+    private void txtNoPendaftaranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNoPendaftaranActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNoPendaftaranActionPerformed
+
+    public static ArrayList<String> getAllStudentIDs() {
+        ArrayList<String> studentIDs = new ArrayList<>();
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/pendaftaranmhs", "root", "");
+            stmt = conn.createStatement();
+            String sql = "SELECT id FROM mahasiswa";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                studentIDs.add(rs.getString("id"));
+            }
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            se.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException se2) {
+            }
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        return studentIDs;
+    }
 
     /**
      * @param args the command line arguments

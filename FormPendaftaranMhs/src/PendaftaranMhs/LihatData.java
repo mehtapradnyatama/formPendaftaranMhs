@@ -39,16 +39,18 @@ public class LihatData extends javax.swing.JFrame {
     private void connect() {
         try {
             con = DriverManager.getConnection("jdbc:mysql://localhost/pendaftaranmhs", "root", "");
+            System.out.println("Connection successful");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
     }
 
     private void fetchData() {
         try {
             String query = "SELECT * FROM mahasiswa";
-            PreparedStatement pst = con.prepareStatement(query);
-            ResultSet rs = pst.executeQuery();
+            pst = con.prepareStatement(query);
+            rs = pst.executeQuery();
             DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
             while (rs.next()) {
                 model.addRow(new Object[]{
@@ -67,6 +69,12 @@ public class LihatData extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
+    }
+
+    private void refreshTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+        fetchData();
     }
 
     /**
@@ -205,25 +213,18 @@ public class LihatData extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDaftarActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-        // Memeriksa apakah baris telah dipilih
-        int selectedRow = jTable1.getSelectedRow();
+         int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
-            // Mengambil data dari baris yang dipilih
             String noPendaftaran = (String) jTable1.getValueAt(selectedRow, 0);
-            String nama = (String) jTable1.getValueAt(selectedRow, 1);
-            String programStudi = (String) jTable1.getValueAt(selectedRow, 2);
-            String jenisKelamin = (String) jTable1.getValueAt(selectedRow, 3);
-            String tempatLahir = (String) jTable1.getValueAt(selectedRow, 4);
-            String tanggalLahir = (String) jTable1.getValueAt(selectedRow, 5);
-            String agama = (String) jTable1.getValueAt(selectedRow, 6);
-            String alamat = (String) jTable1.getValueAt(selectedRow, 7);
-            String telepon = (String) jTable1.getValueAt(selectedRow, 8);
-            String email = (String) jTable1.getValueAt(selectedRow, 9);
-
-            // Membuka form DaftarMahasiswa dengan data yang ada untuk diedit
             DaftarMahasiswa daftarMahasiswa = new DaftarMahasiswa();
+            daftarMahasiswa.loadAndEdit(noPendaftaran); 
             daftarMahasiswa.setVisible(true);
-            daftarMahasiswa.loadData(noPendaftaran, nama, programStudi, jenisKelamin, tempatLahir, tanggalLahir, agama, alamat, telepon, email);
+            daftarMahasiswa.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    refreshTable();
+                }
+            });
         } else {
             JOptionPane.showMessageDialog(null, "Pilih baris yang ingin diedit terlebih dahulu.");
         }
@@ -231,21 +232,25 @@ public class LihatData extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int selectedRow = jTable1.getSelectedRow();
-        if (selectedRow != -1) {
-            String noPendaftaran = (String) jTable1.getValueAt(selectedRow, 0);
-            try {
-                pst = con.prepareStatement("DELETE FROM mahasiswa WHERE noPendaftaran = ?");
-                pst.setString(1, noPendaftaran);
-                pst.executeUpdate();
-                DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-                model.removeRow(selectedRow);
-                JOptionPane.showMessageDialog(this, "Data berhasil dihapus");
-            } catch (SQLException ex) {
-                ex.printStackTrace();
+    if (selectedRow != -1) {
+        try {
+            String noPendaftaran = jTable1.getValueAt(selectedRow, 0).toString();
+            PreparedStatement pst = con.prepareStatement("DELETE FROM mahasiswa WHERE noPendaftaran = ?");
+            pst.setInt(1, Integer.parseInt(noPendaftaran));
+            int deletedRows = pst.executeUpdate();
+            if (deletedRows > 0) {
+                ((DefaultTableModel) jTable1.getModel()).removeRow(selectedRow);
+                JOptionPane.showMessageDialog(null, "Data deleted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to delete data. Please try again.");
             }
-        } else {
-            JOptionPane.showMessageDialog(this, "Pilih data yang ingin dihapus");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error deleting data: " + ex.getMessage());
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Please select a row to delete.");
+    }
+
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtManajemenMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManajemenMataKuliahActionPerformed
