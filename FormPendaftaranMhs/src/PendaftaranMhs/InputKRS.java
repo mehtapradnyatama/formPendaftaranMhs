@@ -42,14 +42,18 @@ public class InputKRS extends javax.swing.JFrame {
         btnBatal = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jMenu5 = new javax.swing.JMenu();
+        txtMenuUtama = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        txtDaftarMahasiswa = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        txtLihatDataMahasiswa = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        txtManajemenMataKuliah = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabelInputKRS.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelInputKRS.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabelInputKRS.setText("INPUT KRS");
 
         jLabelMhs.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -78,19 +82,43 @@ public class InputKRS extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("File");
+        jMenu1.setText("Input KRS");
 
-        jMenu2.setText("jMenu2");
-        jMenu1.add(jMenu2);
+        txtMenuUtama.setText("Menu Utama");
+        txtMenuUtama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMenuUtamaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtMenuUtama);
+        jMenu1.add(jSeparator1);
 
-        jMenu3.setText("jMenu3");
-        jMenu1.add(jMenu3);
+        txtDaftarMahasiswa.setText("Daftar Mahasiswa");
+        txtDaftarMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDaftarMahasiswaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtDaftarMahasiswa);
+        jMenu1.add(jSeparator2);
 
-        jMenu4.setText("jMenu4");
-        jMenu1.add(jMenu4);
+        txtLihatDataMahasiswa.setText("Lihat Data Mahasiswa");
+        txtLihatDataMahasiswa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLihatDataMahasiswaActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtLihatDataMahasiswa);
+        jMenu1.add(jSeparator3);
 
-        jMenu5.setText("jMenu5");
-        jMenu1.add(jMenu5);
+        txtManajemenMataKuliah.setText("Manajemen Mata Kuliah");
+        txtManajemenMataKuliah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtManajemenMataKuliahActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtManajemenMataKuliah);
+        jMenu1.add(jSeparator4);
 
         jMenuBar1.add(jMenu1);
 
@@ -100,10 +128,6 @@ public class InputKRS extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(jLabelInputKRS)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,6 +143,9 @@ public class InputKRS extends javax.swing.JFrame {
                             .addComponent(jLabelMK))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelInputKRS)
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(jComboBoxMK, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jComboBoxMhs, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
@@ -126,9 +153,9 @@ public class InputKRS extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabelInputKRS)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMhs)
                     .addComponent(jComboBoxMhs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,7 +167,7 @@ public class InputKRS extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSimpan)
                     .addComponent(btnBatal))
-                .addContainerGap(22, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,6 +184,26 @@ public class InputKRS extends javax.swing.JFrame {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnBatalActionPerformed
+
+    private void txtMenuUtamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMenuUtamaActionPerformed
+        // TODO add your handling code here:
+        new MenuUtama().setVisible(true);
+    }//GEN-LAST:event_txtMenuUtamaActionPerformed
+
+    private void txtDaftarMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDaftarMahasiswaActionPerformed
+        // TODO add your handling code here:
+        new DaftarMahasiswa().setVisible(true);
+    }//GEN-LAST:event_txtDaftarMahasiswaActionPerformed
+
+    private void txtLihatDataMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLihatDataMahasiswaActionPerformed
+        // TODO add your handling code here:
+        new LihatData().setVisible(true);
+    }//GEN-LAST:event_txtLihatDataMahasiswaActionPerformed
+
+    private void txtManajemenMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManajemenMataKuliahActionPerformed
+        // TODO add your handling code here:
+        new ManajemenMK().setVisible(true);
+    }//GEN-LAST:event_txtManajemenMataKuliahActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,35 +268,34 @@ public class InputKRS extends javax.swing.JFrame {
         }
     }
 
-       private void populateStudentIDs() {
+    private void populateStudentIDs() {
         Connection conn = null;
-    PreparedStatement pstmt = null;
-    ResultSet rs = null;
-    
-    try {
-        conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pendaftaranmhs", "root", "");
-        String sql = "SELECT noPendaftaran FROM mahasiswa";
-        pstmt = conn.prepareStatement(sql);
-        rs = pstmt.executeQuery();
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
 
-        while (rs.next()) {
-            jComboBoxMhs.addItem(String.valueOf(rs.getInt("noPendaftaran")));
-        }
-    } catch (SQLException se) {
-        se.printStackTrace();
-    } finally {
         try {
-            if (rs != null) rs.close();
-            if (pstmt != null) pstmt.close();
-            if (conn != null) conn.close();
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pendaftaranmhs", "root", "");
+            String sql = "SELECT noPendaftaran FROM mahasiswa";
+            pstmt = conn.prepareStatement(sql);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                jComboBoxMhs.addItem(String.valueOf(rs.getInt("noPendaftaran")));
+            }
         } catch (SQLException se) {
             se.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
         }
     }
-}
-
     private void submitKRS() {
-        String selectedCourseInfo = (String) jComboBoxMK.getSelectedItem();
+    String selectedCourseInfo = (String) jComboBoxMK.getSelectedItem();
     String[] parts = selectedCourseInfo.split(" - ");
     int selectedCourseID = Integer.parseInt(parts[0].trim());
 
@@ -257,17 +303,11 @@ public class InputKRS extends javax.swing.JFrame {
 
     Connection conn = null;
     PreparedStatement pstmt = null;
+    PreparedStatement pstmtUpdateSKS = null;
+    ResultSet rs = null;
+
     try {
         conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/pendaftaranmhs", "root", "");
-
-        // Check if selectedStudentID exists in mahasiswa table (optional, you can remove this check if populateStudentIDs is correct)
-        PreparedStatement checkStudentStmt = conn.prepareStatement("SELECT noPendaftaran FROM mahasiswa WHERE noPendaftaran = ?");
-        checkStudentStmt.setInt(1, selectedStudentID);
-        ResultSet studentResult = checkStudentStmt.executeQuery();
-        if (!studentResult.next()) {
-            JOptionPane.showMessageDialog(this, "Selected student ID does not exist.");
-            return;
-        }
 
         // Insert into registrasi table
         String sql = "INSERT INTO registrasi (id_mk, noPendaftaran) VALUES (?, ?)";
@@ -276,8 +316,32 @@ public class InputKRS extends javax.swing.JFrame {
         pstmt.setInt(2, selectedStudentID);
 
         int affectedRows = pstmt.executeUpdate();
+
         if (affectedRows > 0) {
-            JOptionPane.showMessageDialog(this, "KRS successfully submitted.");
+            // Get the SKS of the selected course
+            String sqlGetSKS = "SELECT sks FROM matakuliah WHERE id_mk = ?";
+            pstmtUpdateSKS = conn.prepareStatement(sqlGetSKS);
+            pstmtUpdateSKS.setInt(1, selectedCourseID);
+            rs = pstmtUpdateSKS.executeQuery();
+
+            int sks = 0;
+            if (rs.next()) {
+                sks = rs.getInt("sks");
+            }
+
+            // Update the total SKS in mahasiswa table
+            String sqlUpdateSKS = "UPDATE mahasiswa SET total_sks = total_sks + ? WHERE noPendaftaran = ?";
+            pstmtUpdateSKS = conn.prepareStatement(sqlUpdateSKS);
+            pstmtUpdateSKS.setInt(1, sks);
+            pstmtUpdateSKS.setInt(2, selectedStudentID);
+
+            int rowsUpdated = pstmtUpdateSKS.executeUpdate();
+
+            if (rowsUpdated > 0) {
+                JOptionPane.showMessageDialog(this, "KRS successfully submitted and SKS updated.");
+            } else {
+                JOptionPane.showMessageDialog(this, "KRS submitted, but failed to update SKS.");
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Error submitting KRS.");
         }
@@ -286,7 +350,9 @@ public class InputKRS extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Error submitting KRS. " + se.getMessage());
     } finally {
         try {
+            if (rs != null) rs.close();
             if (pstmt != null) pstmt.close();
+            if (pstmtUpdateSKS != null) pstmtUpdateSKS.close();
             if (conn != null) conn.close();
         } catch (SQLException se) {
             se.printStackTrace();
@@ -303,10 +369,14 @@ public class InputKRS extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelMK;
     private javax.swing.JLabel jLabelMhs;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JMenuItem txtDaftarMahasiswa;
+    private javax.swing.JMenuItem txtLihatDataMahasiswa;
+    private javax.swing.JMenuItem txtManajemenMataKuliah;
+    private javax.swing.JMenuItem txtMenuUtama;
     // End of variables declaration//GEN-END:variables
 }

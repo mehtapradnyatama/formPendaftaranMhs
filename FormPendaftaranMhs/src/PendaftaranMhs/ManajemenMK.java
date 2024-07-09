@@ -61,6 +61,8 @@ public class ManajemenMK extends javax.swing.JFrame {
         txtDaftarMahasiswa = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         txtEditDataMahasiswa = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
+        txtInputKRS = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -142,6 +144,15 @@ public class ManajemenMK extends javax.swing.JFrame {
             }
         });
         jMenu1.add(txtEditDataMahasiswa);
+        jMenu1.add(jSeparator4);
+
+        txtInputKRS.setText("Input KRS");
+        txtInputKRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInputKRSActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtInputKRS);
         jMenu1.add(jSeparator3);
 
         jMenuBar1.add(jMenu1);
@@ -237,6 +248,11 @@ public class ManajemenMK extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
+    private void txtInputKRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputKRSActionPerformed
+        // TODO add your handling code here:
+        new InputKRS().setVisible(true);
+    }//GEN-LAST:event_txtInputKRSActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -299,12 +315,14 @@ public class ManajemenMK extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel labelNamaMk;
     private javax.swing.JLabel labelSKS;
     private javax.swing.JMenuItem txtDaftarMahasiswa;
     private javax.swing.JMenuItem txtEditDataMahasiswa;
+    private javax.swing.JMenuItem txtInputKRS;
     private javax.swing.JMenuItem txtMenuUtama;
     private javax.swing.JTextField txtNamaMK;
     private javax.swing.JTextField txtSKS;

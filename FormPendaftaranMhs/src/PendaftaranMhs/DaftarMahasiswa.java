@@ -137,6 +137,8 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         txtEditData = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         txtManajemenMataKuliah = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        txtInputKRS = new javax.swing.JMenuItem();
         SeparatorEditData = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -228,6 +230,15 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
             }
         });
         jMenu1.add(txtManajemenMataKuliah);
+        jMenu1.add(jSeparator2);
+
+        txtInputKRS.setText("Input KRS");
+        txtInputKRS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInputKRSActionPerformed(evt);
+            }
+        });
+        jMenu1.add(txtInputKRS);
         jMenu1.add(SeparatorEditData);
 
         jMenuBar1.add(jMenu1);
@@ -276,7 +287,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(BtnPerempuan, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
+                        .addGap(134, 134, 134)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(171, Short.MAX_VALUE))
         );
@@ -415,6 +426,11 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNoPendaftaranActionPerformed
 
+    private void txtInputKRSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputKRSActionPerformed
+        // TODO add your handling code here:
+        new InputKRS().setVisible(true);
+    }//GEN-LAST:event_txtInputKRSActionPerformed
+
     public static ArrayList<String> getAllStudentIDs() {
         ArrayList<String> studentIDs = new ArrayList<>();
         Connection conn = null;
@@ -476,6 +492,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel labelAgama;
     private javax.swing.JLabel labelAlamat;
     private javax.swing.JLabel labelEmail;
@@ -490,6 +507,7 @@ public class DaftarMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTextField txtAlamat;
     private javax.swing.JMenuItem txtEditData;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JMenuItem txtInputKRS;
     private javax.swing.JMenuItem txtManajemenMataKuliah;
     private javax.swing.JMenuItem txtMenuUtama;
     private javax.swing.JTextField txtNama;

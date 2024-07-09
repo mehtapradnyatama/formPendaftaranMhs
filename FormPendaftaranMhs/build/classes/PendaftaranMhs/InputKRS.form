@@ -6,29 +6,49 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" value="Input KRS"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jMenu2">
+            <MenuItem class="javax.swing.JMenuItem" name="txtMenuUtama">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu2"/>
+                <Property name="text" type="java.lang.String" value="Menu Utama"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu3">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMenuUtamaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="txtDaftarMahasiswa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu3"/>
+                <Property name="text" type="java.lang.String" value="Daftar Mahasiswa"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu4">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDaftarMahasiswaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="txtLihatDataMahasiswa">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu4"/>
+                <Property name="text" type="java.lang.String" value="Lihat Data Mahasiswa"/>
               </Properties>
-            </Menu>
-            <Menu class="javax.swing.JMenu" name="jMenu5">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLihatDataMahasiswaActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator3">
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="txtManajemenMataKuliah">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenu5"/>
+                <Property name="text" type="java.lang.String" value="Manajemen Mata Kuliah"/>
               </Properties>
-            </Menu>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtManajemenMataKuliahActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator4">
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
@@ -57,11 +77,6 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-              <Component id="jLabelInputKRS" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -79,6 +94,10 @@
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jLabelInputKRS" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                           <Component id="jComboBoxMK" max="32767" attributes="0"/>
                           <Component id="jComboBoxMhs" max="32767" attributes="0"/>
                       </Group>
@@ -91,9 +110,9 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jLabelInputKRS" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabelMhs" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jComboBoxMhs" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -108,7 +127,7 @@
                   <Component id="btnSimpan" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnBatal" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="22" max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -117,7 +136,7 @@
     <Component class="javax.swing.JLabel" name="jLabelInputKRS">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="18" style="1"/>
+          <Font name="Segoe UI" size="14" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="INPUT KRS"/>
       </Properties>

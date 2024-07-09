@@ -63,7 +63,8 @@ public class LihatData extends javax.swing.JFrame {
                     rs.getString("agama"),
                     rs.getString("alamat"),
                     rs.getString("telepon"),
-                    rs.getString("email")
+                    rs.getString("email"),
+                    rs.getString("total_sks")
                 });
             }
         } catch (SQLException ex) {
@@ -98,6 +99,8 @@ public class LihatData extends javax.swing.JFrame {
         txtDaftar = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         txtManajemenMataKuliah = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        txtInputKRS = new javax.swing.JMenuItem();
         SeparatorDaftar = new javax.swing.JPopupMenu.Separator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,7 +110,7 @@ public class LihatData extends javax.swing.JFrame {
 
             },
             new String [] {
-                "No. Pendaftaran", "Nama", "Program Studi", "Jenis Kelamin", "Tempat Lahir", "Tanggal Lahir", "Agama", "Alamat", "Telepon", "Email"
+                "No. Pendaftaran", "Nama", "Program Studi", "Jenis Kelamin", "Tempat Lahir", "Tanggal Lahir", "Agama", "Alamat", "Telepon", "Email", "SKS"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -130,7 +133,7 @@ public class LihatData extends javax.swing.JFrame {
             }
         });
 
-        jMenu1.setText("Data Mahasiswa");
+        jMenu1.setText("Lihat Data Mahasiswa");
 
         txtMenuUtama.setText("Menu Utama");
         txtMenuUtama.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +160,10 @@ public class LihatData extends javax.swing.JFrame {
             }
         });
         jMenu1.add(txtManajemenMataKuliah);
+        jMenu1.add(jSeparator2);
+
+        txtInputKRS.setText("Input KRS");
+        jMenu1.add(txtInputKRS);
         jMenu1.add(SeparatorDaftar);
 
         jMenuBar1.add(jMenu1);
@@ -213,7 +220,7 @@ public class LihatData extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDaftarActionPerformed
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
-         int selectedRow = jTable1.getSelectedRow();
+        int selectedRow = jTable1.getSelectedRow();
         if (selectedRow != -1) {
             String noPendaftaran = (String) jTable1.getValueAt(selectedRow, 0);
             DaftarMahasiswa daftarMahasiswa = new DaftarMahasiswa();
@@ -232,25 +239,24 @@ public class LihatData extends javax.swing.JFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         int selectedRow = jTable1.getSelectedRow();
-    if (selectedRow != -1) {
-        try {
-            String noPendaftaran = jTable1.getValueAt(selectedRow, 0).toString();
-            PreparedStatement pst = con.prepareStatement("DELETE FROM mahasiswa WHERE noPendaftaran = ?");
-            pst.setInt(1, Integer.parseInt(noPendaftaran));
-            int deletedRows = pst.executeUpdate();
-            if (deletedRows > 0) {
-                ((DefaultTableModel) jTable1.getModel()).removeRow(selectedRow);
-                JOptionPane.showMessageDialog(null, "Data deleted successfully.");
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to delete data. Please try again.");
+        if (selectedRow != -1) {
+            try {
+                String noPendaftaran = jTable1.getValueAt(selectedRow, 0).toString();
+                PreparedStatement pst = con.prepareStatement("DELETE FROM mahasiswa WHERE noPendaftaran = ?");
+                pst.setInt(1, Integer.parseInt(noPendaftaran));
+                int deletedRows = pst.executeUpdate();
+                if (deletedRows > 0) {
+                    ((DefaultTableModel) jTable1.getModel()).removeRow(selectedRow);
+                    JOptionPane.showMessageDialog(null, "Data deleted successfully.");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to delete data. Please try again.");
+                }
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error deleting data: " + ex.getMessage());
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error deleting data: " + ex.getMessage());
+        } else {
+            JOptionPane.showMessageDialog(null, "Please select a row to delete.");
         }
-    } else {
-        JOptionPane.showMessageDialog(null, "Please select a row to delete.");
-    }
-
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtManajemenMataKuliahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtManajemenMataKuliahActionPerformed
@@ -304,8 +310,10 @@ public class LihatData extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem txtDaftar;
+    private javax.swing.JMenuItem txtInputKRS;
     private javax.swing.JMenuItem txtManajemenMataKuliah;
     private javax.swing.JMenuItem txtMenuUtama;
     // End of variables declaration//GEN-END:variables
